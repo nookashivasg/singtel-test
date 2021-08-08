@@ -3,10 +3,7 @@ package com.singtel.singtelcodebackend;
 import com.singtel.singtelcodebackend.actions.Flyer;
 import com.singtel.singtelcodebackend.actions.Swimmer;
 import com.singtel.singtelcodebackend.enums.Sound;
-import com.singtel.singtelcodebackend.model.Bird;
-import com.singtel.singtelcodebackend.model.Chicken;
-import com.singtel.singtelcodebackend.model.Duck;
-import com.singtel.singtelcodebackend.model.Rooster;
+import com.singtel.singtelcodebackend.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.After;
 import org.junit.Before;
@@ -22,6 +19,14 @@ public class TestScenario1 {
     Duck duck;
     Chicken chicken;
     Rooster rooster;
+    Parrot parrotLivesWithDogs;
+    Parrot parrotLivesWithCats;
+    Parrot parrotLivesWithRooster;
+    Parrot parrotLivesWithDucks;
+    Parrot parrotListensToPhoneRingings;
+
+    Dog dog;
+    Cat cat;
 
     @Before
     public void setUp() throws Exception {
@@ -29,6 +34,24 @@ public class TestScenario1 {
         duck = new Duck();
         chicken = new Chicken();
         rooster = chicken.grow();
+
+        dog = new Dog();
+        cat = new Cat();
+
+        parrotLivesWithDogs = new Parrot();
+        parrotLivesWithDogs.setSoundLearnt(dog.sound());
+
+        parrotLivesWithCats = new Parrot();
+        parrotLivesWithCats.setSoundLearnt(cat.sound());
+
+        parrotLivesWithRooster = new Parrot();
+        parrotLivesWithRooster.setSoundLearnt(rooster.sing());
+
+        parrotLivesWithDucks = new Parrot();
+        parrotLivesWithDucks.setSoundLearnt(duck.sing());
+
+        parrotListensToPhoneRingings = new Parrot();
+        parrotListensToPhoneRingings.setSoundLearnt(Sound.PHONE_RINGTONE.getSound());
     }
 
     @After
@@ -83,5 +106,35 @@ public class TestScenario1 {
     public void testRoosterSings() {
         log.info("--- testRoosterSings ---");
         assertEquals(rooster.sing(), Sound.ROOSTER.getSound());
+    }
+
+    @Test
+    public void testParrotMimicsDogSound() {
+        log.info("--- testParrotMimicsDogSound ---");
+        assertEquals(parrotLivesWithDogs.mimicSound(), Sound.DOG.getSound());
+    }
+
+    @Test
+    public void testParrotMimicsCatSound() {
+        log.info("--- testParrotMimicsCatSound ---");
+        assertEquals(parrotLivesWithCats.mimicSound(), Sound.CAT.getSound());
+    }
+
+    @Test
+    public void testParrotMimicsRoosterSound() {
+        log.info("--- testParrotMimicsRoosterSound ---");
+        assertEquals(parrotLivesWithRooster.mimicSound(), Sound.ROOSTER.getSound());
+    }
+
+    @Test
+    public void testParrotMimicsDuckSound() {
+        log.info("--- testParrotMimicsDuckSound ---");
+        assertEquals(parrotLivesWithDucks.mimicSound(), Sound.DUCK.getSound());
+    }
+
+    @Test
+    public void testParrotMimicsPhoneRingingsSound() {
+        log.info("--- testParrotMimicsPhoneRingingsSound ---");
+        assertEquals(parrotListensToPhoneRingings.mimicSound(), Sound.PHONE_RINGTONE.getSound());
     }
 }
