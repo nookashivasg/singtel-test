@@ -1,8 +1,11 @@
 package com.singtel.singtelcodebackend;
 
 import com.singtel.singtelcodebackend.actions.Flyer;
+import com.singtel.singtelcodebackend.actions.Swimmer;
 import com.singtel.singtelcodebackend.enums.Sound;
 import com.singtel.singtelcodebackend.model.Bird;
+import com.singtel.singtelcodebackend.model.Chicken;
+import com.singtel.singtelcodebackend.model.Duck;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.After;
 import org.junit.Before;
@@ -15,15 +18,21 @@ import static org.junit.Assert.assertTrue;
 public class TestScenario1 {
 
     Bird bird;
+    Duck duck;
+    Chicken chicken;
 
     @Before
     public void setUp() throws Exception {
         bird = new Bird();
+        duck = new Duck();
+        chicken = new Chicken();
     }
 
     @After
     public void tearDown() throws Exception {
         bird = null;
+        duck = null;
+        chicken = null;
     }
 
     // Test A1
@@ -38,5 +47,32 @@ public class TestScenario1 {
         log.info("--- test Bird Flies ---");
         assertTrue(!(bird instanceof Flyer));// Not All birds can Fly
         log.info("Not every bird can fly");
+    }
+
+    // Scenario 2
+    @Test
+    public void testDuckSings() {
+        log.info("--- testDuckSings ---");
+        assertEquals(duck.sing(), Sound.DUCK.getSound());
+    }
+
+    @Test
+    public void testDuckSwims() {
+        log.info("--- testDuckSwims ---");
+        assertTrue(duck instanceof Swimmer);
+        assertTrue(duck.swim());
+    }
+
+    @Test
+    public void testChickenSings() {
+        log.info("--- testChickenSings ---");
+        assertEquals(chicken.sing(), Sound.CHICKEN.getSound());
+    }
+
+    @Test
+    public void testChickenCannotFly() {
+        log.info("--- testChickenCannotFly ---");
+        assertTrue(!(chicken instanceof Flyer));
+        log.info("Chicken cannot fly");
     }
 }
