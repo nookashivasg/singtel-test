@@ -2,6 +2,8 @@ package com.singtel.singtelcodebackend;
 
 import com.singtel.singtelcodebackend.actions.Singer;
 import com.singtel.singtelcodebackend.actions.Walker;
+import com.singtel.singtelcodebackend.enums.Color;
+import com.singtel.singtelcodebackend.enums.Size;
 import com.singtel.singtelcodebackend.model.Clownfish;
 import com.singtel.singtelcodebackend.model.Dolphin;
 import com.singtel.singtelcodebackend.model.Fish;
@@ -54,5 +56,31 @@ public class TestScenario2 {
     public void testFishSwims() {
         log.info("--- testFishCannotSing ---");
         assertTrue(fish.swim());
+    }
+
+    @Test
+    public void testSharkIsLargeAndGrey() {
+        log.info("--- testSharkIsLargeAndGrey ---");
+        assertTrue(shark.getColor().equals(Color.GREY));
+        assertTrue(shark.getSize().equals(Size.LARGE));
+    }
+
+    @Test
+    public void testClownfishIsSmallAndOrange() {
+        log.info("--- testClownfishIsSmallAndOrange ---");
+        assertTrue(clownfish.getColor().equals(Color.ORANGE));
+        assertTrue(clownfish.getSize().equals(Size.SMALL));
+    }
+
+    @Test
+    public void testClownfishMakesJokes() {
+        log.info("--- testClownfishMakesJokes ---");
+        assertTrue(clownfish.makeJokes());
+    }
+
+    @Test
+    public void testSharkEatsOtherFish() {
+        log.info("--- testSharkEatsOtherFish ---");
+        assertTrue(shark.prey());
     }
 }
