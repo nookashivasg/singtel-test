@@ -55,4 +55,6 @@ public class TestScenario3 {
         log.info("--- testCaterpillarWalks ---");
         assertTrue(caterpillar.walk());
     }
+
+
 }
