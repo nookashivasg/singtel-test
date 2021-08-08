@@ -6,6 +6,7 @@ import com.singtel.singtelcodebackend.enums.Sound;
 import com.singtel.singtelcodebackend.model.Bird;
 import com.singtel.singtelcodebackend.model.Chicken;
 import com.singtel.singtelcodebackend.model.Duck;
+import com.singtel.singtelcodebackend.model.Rooster;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.After;
 import org.junit.Before;
@@ -20,12 +21,14 @@ public class TestScenario1 {
     Bird bird;
     Duck duck;
     Chicken chicken;
+    Rooster rooster;
 
     @Before
     public void setUp() throws Exception {
         bird = new Bird();
         duck = new Duck();
         chicken = new Chicken();
+        rooster = chicken.grow();
     }
 
     @After
@@ -74,5 +77,11 @@ public class TestScenario1 {
         log.info("--- testChickenCannotFly ---");
         assertTrue(!(chicken instanceof Flyer));
         log.info("Chicken cannot fly");
+    }
+
+    @Test
+    public void testRoosterSings() {
+        log.info("--- testRoosterSings ---");
+        assertEquals(rooster.sing(), Sound.ROOSTER.getSound());
     }
 }
