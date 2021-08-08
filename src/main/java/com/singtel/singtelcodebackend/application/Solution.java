@@ -9,7 +9,7 @@ public class Solution {
 
     public static void main(String[] args) {
         try {
-            log.info("--- Bird ---");
+          /*  log.info("--- Bird ---");
             Bird bird = new Bird();
             bird.walk();
             //  bird.fly();// All birds cannot Fly
@@ -77,7 +77,20 @@ public class Solution {
             parrot5.walk();
             parrot5.fly();
             parrot5.sing();
-            parrot5.mimicSound();
+            parrot5.mimicSound(); */
+
+            log.info("--- Caterpillar ---");
+            Caterpillar caterpillar = new Caterpillar();
+            caterpillar.walk();
+
+            log.info("--- Butterfly ---");
+            Butterfly butterfly = new Butterfly();
+            butterfly.fly();
+
+            Caterpillar caterpillar2 = new Caterpillar();
+            caterpillar2.walk();
+            Butterfly butterfly2 = caterpillar2.metamorphosis();
+            butterfly2.fly();
 
         } catch (Exception e) {
             log.error("Exception : {}", e);

@@ -83,8 +83,6 @@ public class TestScenario2 {
         log.info("--- testSharkEatsOtherFish ---");
         assertTrue(shark.prey());
     }
-
-    
     @Test
     public void testDolphinSwims() {
         log.info("--- testDolphinSwims ---");
